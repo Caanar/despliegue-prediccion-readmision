@@ -21,7 +21,7 @@ api_url = "http://{}:8001/api/v1/predict".format(api_url)
 # Layout in HTML
 app.layout = html.Div(
     [
-    html.H6("Ingrese la información del cliente:"),
+    html.H6("Ingrese la información del Paciente:"),
     html.Div(["Número de procedimientos de laboratorio realizados en el encuentro: ",
               dcc.Input(id='num_lab_procedures', value='1', type='number')]),
     html.Br(),
@@ -40,6 +40,7 @@ app.layout = html.Div(
     html.Div(["Número de diagnósticos que tiene el paciente en el sistema: ",
               dcc.Input(id='number_diagnoses', value='1', type='number')]),
     html.Br(),
+    html.H6("Predicción de readmisión (menor a 30 días, mayor a 30 días o No se espera readmisión):"),
     html.H6(html.Div(id='resultado')),
     ]
 )
