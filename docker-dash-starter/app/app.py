@@ -58,12 +58,12 @@ def update_output_div(num_lab_procedures, num_medications, number_inpatient, tim
     myreq = {
         "inputs": [
             {
-            "num_lab_procedures": 1,
-            "num_medications": 1,
-            "number_inpatient": 1,
-            "time_in_hospital": 1,
-            "discharge_disposition_id": 1,
-            "number_diagnoses": 1
+            "num_lab_procedures": num_lab_procedures,
+            "num_medications": num_medications,
+            "number_inpatient": number_inpatient,
+            "time_in_hospital": time_in_hospital,
+            "discharge_disposition_id": discharge_disposition_id,
+            "number_diagnoses": number_diagnoses
             }
         ]
       }
@@ -75,8 +75,8 @@ def update_output_div(num_lab_procedures, num_medications, number_inpatient, tim
     logger.info("Response: {}".format(data))
 
     # Pick result to return from json format
-    rounded_prediction = round(data["predictions"][0])
-    result = "<30" if rounded_prediction == 0 else ">30" if rounded_prediction == 1 else "NO"
+    prediction = data["predictions"][0]
+    result = "<30" if prediction == 0 else ">30" if prediction == 1 else "NO"
     
     return result 
 
