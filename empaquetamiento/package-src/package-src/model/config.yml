@@ -1,0 +1,47 @@
+# Nombre del paquete
+package_name: modelo-readmision
+
+# Archivos de datos
+train_data_file: readmision_train.csv
+test_data_file: readmision_test.csv
+
+# Variables
+# Objetivo
+target: readmitted
+
+features:
+  - num_lab_procedures
+  - num_medications
+  - number_inpatient
+  - time_in_hospital
+  - discharge_disposition_id
+  - number_diagnoses
+
+# pipelines
+pipeline_name: modelo-readmision
+pipeline_save_file: modelo-readmision-output
+
+# fracción del conjunto de prueba
+test_size: 0.25
+
+# semilla
+random_state: 42
+
+# hiperparámetros del modelo 
+n_estimators: 150
+
+max_depth: 19
+
+# variables a mapear
+qual_vars:
+  - readmitted
+
+# 
+categorical_vars:
+  - readmitted
+
+# mapeo de variables
+qual_mappings:
+  'NO': 0
+  '>30': 1
+  '<30': 2
